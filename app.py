@@ -1,5 +1,1 @@
-print(1)
-print('hello')
-print('hello')
-print('world')
-print('world')
+print('hello world')
