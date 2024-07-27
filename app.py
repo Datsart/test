@@ -1,2 +1,1 @@
-print('main')
-print('bug fix')
+print(1)
