@@ -7,7 +7,7 @@ WORKDIR /app
 # Копируем файлы приложения в контейнер
 COPY req.txt req.txt
 COPY app.py app.py
-COPY ./templates templates
+COPY templates templates
 
 # Устанавливаем зависимости для Python
 RUN pip3 install -r req.txt
