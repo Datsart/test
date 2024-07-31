@@ -1,11 +1,21 @@
-FROM ubuntu:latest
+# Используем базовый образ с Python
+FROM python:3.12-slim
 
+# Создаем рабочую директорию
 WORKDIR /app
 
-COPY ./script.sh .
+# Копируем файлы приложения в контейнер
+COPY req.txt req.txt
+COPY app.py app.py
+COPY ./templates templates
 
-# Используем ENTRYPOINT в виде строки для запуска команд в /bin/bash -c
-ENTRYPOINT ["bash", "./script.sh"]
+# Устанавливаем зависимости для Python
+RUN pip3 install -r req.txt
 
-# CMD оставляем пустым, чтобы переданные команды могли быть выполнены
-CMD ["echo 'Welcome to the container! Run your commands here.'"]
+# Устанавливаем curl
+RUN apt-get update && \
+    apt-get install -y curl && \
+    rm -rf /var/lib/apt/lists/*
+
+# Запускаем приложение
+CMD ["python3", "app.py"]
