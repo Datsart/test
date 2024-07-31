@@ -18,4 +18,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Запускаем приложение
-CMD ["python3", "app.py"]
+ CMD ["python3", "app.py"]
+# CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+
