@@ -11,7 +11,7 @@ def index():
 @app.route("/test", methods=["GET", "POST"])
 def func():
     data = request.get_json()
-    return jsonify(data)
+    return jsonify({"data": data})
 
 
 if __name__ == "__main__":

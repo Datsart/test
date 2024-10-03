@@ -10,3 +10,4 @@ def req():
     )
 
     print(req.text)
+req()
