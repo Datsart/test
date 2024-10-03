@@ -10,6 +10,3 @@ def req():
     )
 
     print(req.text)
-
-
-print(123431)
