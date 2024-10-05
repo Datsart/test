@@ -1,23 +1,10 @@
 # Используем базовый образ с Python
-FROM python:3.12-slim
+FROM ubuntu:24.10
 
 # Создаем рабочую директорию
 WORKDIR /app
 
-# Копируем файлы приложения в контейнер
-COPY req.txt req.txt
-COPY app.py app.py
-COPY templates templates
-
-# Устанавливаем зависимости для Python
-RUN pip3 install -r req.txt
-
-# Устанавливаем curl
-RUN apt-get update && \
-    apt-get install -y curl && \
-    rm -rf /var/lib/apt/lists/*
-
-# Запускаем приложение
- CMD ["python3", "app.py"]
-# CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
-
+COPY script.sh script.sh
+RUN chmod +x script.sh
+ENTRYPOINT ["bash", "script.sh"]
+CMD ["tail", "-f"]

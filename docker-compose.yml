@@ -1,5 +1,6 @@
 services:
-  web:
+  script:
     build: .
-    ports:
-      - "8000:5000"
+    environment:
+      - A=hello
+      - B=world
